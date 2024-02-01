@@ -1,0 +1,28 @@
+{
+  "name": "infinity",
+  "version": "1.0.0",
+  "description": "тестовое задание для emcd",
+  "main": "src/app/main.js",
+  "repository": "https://github.com/lovelyProject/infinityScroll.git",
+  "author": "Edward <edward.hardwork2000@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "eslint": "eslint --ext .js,.vue src",
+    "build": "vite build",
+    "jsdoc": "jsdoc -c jsdoc.json --pedantic"
+  },
+  "dependencies": {
+    "vue": "^3.4.15",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "axios": "^1.6.7",
+    "vite": "^5.0.12"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.21.1",
+    "jsdoc": "^4.0.2",
+    "sass": "^1.70.0",
+    "vue-template-compiler": "^2.7.16"
+  }
+}
