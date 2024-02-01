@@ -13,6 +13,6 @@
 - yarn dev
 
 
-<p align="center">
+
   ![infinityscroll](https://github.com/lovelyProject/infinityScroll/assets/109457187/c21ee3c4-8a68-4966-8539-9499eb0450f7)
-</p>
+
