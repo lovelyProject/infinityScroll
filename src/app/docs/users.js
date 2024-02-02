@@ -28,9 +28,9 @@
 
 /**
  * @interface Response {
- *  @property { boolean } ok - is fetch status code < 400>?
- *  @property { number } status - status code
- *  @property { string } statusText
+ *  @property { boolean } ok - статус код < 400?
+ *  @property { number } status - статус код
+ *  @property { string } statusText - расшифровка статуса
  *  @property { boolean } redirected - есть ли редирект?
  *  @property { string } url - полный url запроса
  *  @property { object } headers - заголовки
@@ -39,7 +39,8 @@
  */
 
 /**
- * @function parseQueryParams - парсит объект в строку с query параметрами
+ * Парсит объект в строку с query параметрами
+ * @function parseQueryParams
  * @param { object } objectWithQuery - объект с query параметрами, где название это ключ, а значение - это значение ключа
  * @returns { string } - возвращает строка с query параметрами
  */
@@ -62,7 +63,7 @@ function parseQueryParams(objectWithQuery) {
  * Получение пользователей с текущей страницы
  * @function getUsers
  */
-async function getUsers() {
+async function getUsers(currentPage, countUserPerPage, isLoading) {
     try {
         if (isLoading.value) {
             return null;
@@ -74,12 +75,15 @@ async function getUsers() {
             results: countUserPerPage
         }
 
+        const { PROTOCOL, DOMAIN } = process.env
+        const url = PROTOCOL + DOMAIN;
+
         /**
          * Ответ приходящий с сервера
          * Можно конвертировать в json формат
          * @type { Response }
          */
-        const result = await fetch('https://randomuser.me/api?' + parseQueryParams(queryParams));
+        const result = await fetch(url + 'api?' + parseQueryParams(queryParams));
 
         /** данные с сервера
          * @type { object }

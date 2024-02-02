@@ -17,3 +17,23 @@ export function throttle(callback, timeout) {
         }, timeout)
     }
 }
+
+/**
+ * @function parseQueryParams - парсит объект в строку с query параметрами
+ * @param { object } objectWithQuery - объект с query параметрами, где название это ключ, а значение - это значение ключа
+ * @returns { string } - возвращает строка с query параметрами
+ */
+export function parseQueryParams(objectWithQuery) {
+    let query = '';
+    const lastParam = Object.keys(objectWithQuery).at(-1);
+
+    for (let [key, value] of Object.entries(objectWithQuery)) {
+        query += `${key}=${value}`;
+
+        if (key !== lastParam) {
+            query += '&'
+        }
+    }
+
+    return query;
+}

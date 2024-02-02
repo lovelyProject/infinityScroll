@@ -17,6 +17,9 @@ import { ref, onMounted } from 'vue';
 import MainHeader from "@/entities/MainHeader.vue";
 import MainContent from "@/entities/MainContent.vue"
 
+// helpers
+import { parseQueryParams } from "@/app/helpers";
+
 let currentPage = 1;
 const countUserPerPage = 10;
 
@@ -30,31 +33,12 @@ function getUsersFromNextPage() {
   getUsers()
 }
 
-/**
- * @function parseQueryParams - парсит объект в строку с query параметрами
- * @param { object } objectWithQuery - объект с query параметрами, где название это ключ, а значение - это значение ключа
- * @returns { string } - возвращает строка с query параметрами
- */
-function parseQueryParams(objectWithQuery) {
-  let query = '';
-  const lastParam = Object.keys(objectWithQuery).at(-1);
-
-  for (let [key, value] of Object.entries(objectWithQuery)) {
-    query += `${key}=${value}`;
-
-    if (key !== lastParam) {
-      query += '&'
-    }
-  }
-
-  return query;
-}
-
 async function getUsers() {
   try {
     if (isLoading.value) {
       return null;
     }
+
     isLoading.value = true;
 
     const queryParams = {
@@ -62,7 +46,10 @@ async function getUsers() {
       results: countUserPerPage
     }
 
-    const result = await fetch('https://randomuser.me/api?' + parseQueryParams(queryParams));
+    const { PROTOCOL, DOMAIN } = process.env
+    const url = PROTOCOL + DOMAIN;
+
+    const result = await fetch(url + 'api?' + parseQueryParams(queryParams));
     const data = await result.json();
 
     usersList.value = usersList.value.length === 0 ? data.results : [...usersList.value, ...data.results];
