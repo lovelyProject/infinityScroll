@@ -75,10 +75,17 @@ async function getUsers() {
         }
 
         /**
-         *
+         * Ответ приходящий с сервера
+         * Можно конвертировать в json формат
          * @type { Response }
          */
         const result = await fetch('https://randomuser.me/api?' + parseQueryParams(queryParams));
+
+        /** данные с сервера
+         * @type { object }
+         * @property { object } info
+         * @property { User[] } results - массив пользователей
+         */
         const data = await result.json();
 
         usersList.value = usersList.value.length === 0 ? data.results : [...usersList.value, ...data.results];
