@@ -6,12 +6,10 @@
         loading="lazy"
         alt="fan's photo"
         class="card__image"
-      >
+      />
     </div>
     <div class="card__details">
-      <h3
-        class="card__title"
-      >
+      <h3 class="card__title">
         {{ name.first }}
       </h3>
       <a :href="`mailto:${email}`">{{ email }}</a>
@@ -21,6 +19,12 @@
 
 <script setup>
 defineProps({
+  /**
+   * @type { object }
+   * @property { string } title - статус семейный (мисс миссис и пр)
+   * @property { string } first - имя
+   * @property { string } last - фамилия
+   */
   name: {
     type: Object,
     default: () => {}
@@ -31,11 +35,17 @@ defineProps({
     default: '#'
   },
 
+  /**
+   * @type { object }
+   * @property { string } large - url большой картинки
+   * @property { string } medium - url средней картинки
+   * @property { string } thumbnail - url маленькой картинки
+   */
   picture: {
     type: Object,
     default: () => {}
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>

@@ -4,18 +4,18 @@
  * @param { number } timeout - задержка в милисекундах
  */
 export function throttle(callback, timeout) {
-    let timer = null
+  let timer = null;
 
-    return function (...args) {
-        if (timer) return
+  return function (...args) {
+    if (timer) return;
 
-        timer = setTimeout(() => {
-            callback(...args)
+    timer = setTimeout(() => {
+      callback(...args);
 
-            clearTimeout(timer)
-            timer = null
-        }, timeout)
-    }
+      clearTimeout(timer);
+      timer = null;
+    }, timeout);
+  };
 }
 
 /**
@@ -24,16 +24,16 @@ export function throttle(callback, timeout) {
  * @returns { string } - возвращает строка с query параметрами
  */
 export function parseQueryParams(objectWithQuery) {
-    let query = '';
-    const lastParam = Object.keys(objectWithQuery).at(-1);
+  let query = '';
+  const lastParam = Object.keys(objectWithQuery).at(-1);
 
-    for (let [key, value] of Object.entries(objectWithQuery)) {
-        query += `${key}=${value}`;
+  for (const [key, value] of Object.entries(objectWithQuery)) {
+    query += `${key}=${value}`;
 
-        if (key !== lastParam) {
-            query += '&'
-        }
+    if (key !== lastParam) {
+      query += '&';
     }
+  }
 
-    return query;
+  return query;
 }

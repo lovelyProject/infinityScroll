@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "eslint": "eslint --ext .js,.vue src",
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --ext .js,.vue src --fix",
     "build": "vite build",
     "jsdoc": "jsdoc -c jsdoc.json --pedantic"
   },
@@ -19,8 +20,10 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.21.1",
     "jsdoc": "^4.0.2",
+    "prettier": "^3.2.4",
     "sass": "^1.70.0",
     "vue-template-compiler": "^2.7.16"
   }
