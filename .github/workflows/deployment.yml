@@ -7,17 +7,17 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
       - name: Install dependency
-        run: npm ci
+        run: yarn
       - name: lint app
-        run: npm run lint
+        run: yarn lint
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
       - name: Install dependency
-        run: npm ci
+        run: yarn
       - name: build app
-        run: npm run build
+        run: yarn build
       - name: Deploy
         run: echo Deploying...
